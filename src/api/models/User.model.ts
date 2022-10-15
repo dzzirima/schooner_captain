@@ -1,30 +1,36 @@
-import { Table, Model , AutoIncrement, PrimaryKey, Column, AllowNull, NotEmpty} from "sequelize-typescript";
+import {
+  Table,
+  Model,
+  AutoIncrement,
+  PrimaryKey,
+  Column,
+  AllowNull,
+  NotEmpty,
+  Default,
+} from "sequelize-typescript";
 import IUser from "../interfaces/user.interface";
-
+import { DataType } from "sequelize-typescript";
 
 @Table({
-    timestamps:true,
-    tableName: "user",
+  timestamps: true,
+  tableName: "user",
 })
-class User extends Model implements IUser{
+class User extends Model implements IUser {
 
-    @Column
-    @AutoIncrement
-    @PrimaryKey
-    @Column
-    userId?: number;
+@AutoIncrement
+  @Column({ primaryKey: true, type: DataType.INTEGER })
+  userId?: number;
 
-    @Column
-    @AllowNull(false)
-    displayName!: string;
+  @NotEmpty
+  @Column({ type: DataType.STRING })
+  displayName!: string;
 
-    @Column
-    @NotEmpty
-    @AllowNull(false)
-    email!: string;
+  @NotEmpty
+  @Column({ type: DataType.STRING })
+  email!: string;
 
-    @NotEmpty
-    @AllowNull(false)
-    @Column
-    password!: string;
+  @Column({ type: DataType.STRING })
+  password!: string;
 }
+
+export default User;

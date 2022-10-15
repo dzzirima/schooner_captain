@@ -1,7 +1,7 @@
 
 interface IUser{
     
-    userId?: number | null
+    userId?: any | null
     displayName:string,
     email:string,
     password:string
