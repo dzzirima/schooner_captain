@@ -10,8 +10,12 @@ Things to be implemented
 - turn all my memories into NFTS (intergrate with blockchain)
 
 ## Backend progress 
-[ x ] App Class implentation
-[ x  ] DataBase Configuration
-[ x  ] Layout project layout , separating models , services , controllers , interfaces into separate files
+- [x] App Class implentation
+- [x] DataBase Configuration
+- [x] Setout project into the following structure
+    - separating models 
+    - services
+    -  controllers
+    - interfaces
 
 
