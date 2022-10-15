@@ -3,6 +3,7 @@ import morgan from "morgan"
 import cors from "cors"
 import postgresDdClient from "./utils/connect";
 import logger from "../src/utils/logger"
+import apiRoutes from "./api/api.routes";
 
 class App {
     public express: express.Application;
@@ -12,7 +13,7 @@ class App {
     constructor() {
         this.express = express();
         this.setMiddleware();
-        // this.setRoutes();
+        this.setRoutes();
         this.connectToDB();
         this.catchError();
       }
@@ -24,7 +25,7 @@ class App {
       }
     
       private setRoutes(): void {
-        this.express.use("/api/v1", );
+        this.express.use("/api/v1",apiRoutes );
       }
     
       private async connectToDB(): Promise<void> {
