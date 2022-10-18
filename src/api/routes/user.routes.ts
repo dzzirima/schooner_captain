@@ -2,15 +2,16 @@ import { Request, Response } from "express"
 
 
 import {Router } from "express"
-import { createUserService, getAllUsersService, getUserService, updateUserService } from "../services/user.service"
+import { addUserController, deleteUserController, getAllUserController, getUserController, upDateUserController } from "../controllers/user.controller"
 
 
 const userRoutes = Router()
 
-userRoutes.post("/",createUserService)
-userRoutes.get("/:userId",getUserService)
-userRoutes.put("/",updateUserService)
-userRoutes.get("/",getAllUsersService)
+userRoutes.post("/",addUserController)
+userRoutes.get("/:userId",getUserController)
+userRoutes.put("/",upDateUserController)
+userRoutes.get("/",getAllUserController)
+userRoutes.delete("/:userId",deleteUserController)
 
 
 

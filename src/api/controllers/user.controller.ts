@@ -1,6 +1,6 @@
 /**this file contains user controllers */
 import { Request, Response } from "express";
-import { createUserService, getUserService } from "../services/user.service";
+import { createUserService, deleteUserService, getAllUsersService, getUserService, updateUserService } from "../services/user.service";
 import IUser from "../interfaces/user.interface";
 import log from "../../utils/logger";
 
@@ -23,7 +23,8 @@ export const addUserController = async (req: Request, res: Response) => {
   }
 };
 
-export const getAllUserController= async (req: Request, res: Response) => {
+
+export const getUserController= async (req: Request, res: Response) => {
     const { userId } = req.params
     
     // console.log(Id)
@@ -51,3 +52,85 @@ export const getAllUserController= async (req: Request, res: Response) => {
       });
     }
   };
+
+  export const getAllUserController = async (req: Request, res: Response) => {
+ 
+   
+    
+    try {
+
+      let usersFound = await getAllUsersService()
+
+      return res.json({
+        success: true,
+        users:usersFound
+      });
+    } catch (error) {
+      return res.status(500).json({
+        success: false,
+        msg: `${error}`,
+      });
+    }
+  };
+
+  export const  upDateUserController = async (req: Request, res: Response) => {
+
+    try {
+
+      let userUpdateResults =  await updateUserService({...req.body})
+
+
+      
+
+      if( userUpdateResults[0] !== 1 ){
+        return res.status(400).json({
+          success:false,
+          msg:"No entry was updated please provide a valid userId !!"
+        })
+
+      }
+
+      return res.json({
+        success: true,
+        msg:"user was successfully updated "
+      });
+    } catch (error) {
+      return res.status(500).json({
+        success: false,
+        msg: `${error}`,
+      });
+    }
+  };
+
+  export const  deleteUserController = async (req: Request, res: Response) => {
+
+    const {userId } = req.params
+    try {
+
+      let userDeleteResults = await deleteUserService(userId)
+
+    
+
+     
+
+      if( userDeleteResults !== 1 ){
+        return res.status(400).json({
+          success:false,
+          msg:"No entry was deleted please provide a valid userId !!"
+        })
+
+      }
+
+      return res.json({
+        success: true,
+        msg:"Entry  was successfully deleted  "
+      });
+    } catch (error) {
+      return res.status(500).json({
+        success: false,
+        msg: `${error}`,
+      });
+    }
+  };
+  
+
