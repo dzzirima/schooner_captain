@@ -3,8 +3,9 @@ import { Request, Response } from "express";
 import { createUserService, deleteUserService, getAllUsersService, getUserService, updateUserService } from "../services/user.service";
 import IUser from "../interfaces/user.interface";
 import logger from "../../utils/logger";
+import { IUserAuthRequest } from "../interfaces/user.request.interface";
 
-export const addUserController = async (req: Request, res: Response) => {
+export const addUserController = async (req:IUserAuthRequest, res: Response) => {
   const { displayName, email, password, photoURL } = req.body;
   let userOptions: IUser = {...req.body };
 
