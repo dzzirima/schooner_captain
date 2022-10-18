@@ -5,7 +5,7 @@ import IUser from "../interfaces/user.interface";
 import logger from "../../utils/logger";
 import { IUserAuthRequest } from "../interfaces/user.request.interface";
 
-export const addUserController = async (req:IUserAuthRequest, res: Response) => {
+export const addUserController = async (req:Request, res: Response) => {
   const { displayName, email, password, photoURL } = req.body;
   let userOptions: IUser = {...req.body };
 
@@ -37,7 +37,7 @@ export const getUserController= async (req: Request, res: Response) => {
       let userFound = await getUserService(userId)
 
       if( userFound == null){
-        return res.status(400).json({
+        return res.status(404).json({
           success:false,
           msg:"No entry was found please provide a valid userId!!"
         })
