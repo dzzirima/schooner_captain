@@ -5,7 +5,7 @@ import IUser from "../interfaces/user.interface";
 import User from "../models/User.model";
 
 export const createUserService = async (userOptions: IUser) => {
-  return await  User.create({ userOptions });
+  return await  User.create({ ...userOptions });
 };
 
 
@@ -40,7 +40,7 @@ export const updateUserService = async (updateOptions: { [x: string]: any; }):Pr
 
       } , {
         where:{
-          Id :updateOptions.Id
+          userId :updateOptions.userId
         }
       })
     
@@ -56,11 +56,11 @@ export const updateUserService = async (updateOptions: { [x: string]: any; }):Pr
   }
   
 
-  export const  deleteUserService = async (Id:string):Promise<any> =>{
+  export const  deleteUserService = async (userId:string):Promise<any> =>{
     try {
       //return the number of destroyed rows
       let deletedUser  = await User.destroy({where:{
-        Id:Id
+        userId:userId
       }})
 
     

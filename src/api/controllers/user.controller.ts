@@ -2,11 +2,14 @@
 import { Request, Response } from "express";
 import { createUserService, deleteUserService, getAllUsersService, getUserService, updateUserService } from "../services/user.service";
 import IUser from "../interfaces/user.interface";
-import log from "../../utils/logger";
+import logger from "../../utils/logger";
 
 export const addUserController = async (req: Request, res: Response) => {
   const { displayName, email, password, photoURL } = req.body;
   let userOptions: IUser = {...req.body };
+
+  logger.info(userOptions)
+  
 
   try {
     let userResult = await createUserService(userOptions);

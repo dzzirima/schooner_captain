@@ -9,7 +9,7 @@ const userRoutes = Router()
 
 userRoutes.post("/",addUserController)
 userRoutes.get("/:userId",getUserController)
-userRoutes.put("/",upDateUserController)
+userRoutes.patch("/",upDateUserController)
 userRoutes.get("/",getAllUserController)
 userRoutes.delete("/:userId",deleteUserController)
 
