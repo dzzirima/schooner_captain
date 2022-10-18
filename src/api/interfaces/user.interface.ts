@@ -1,11 +1,11 @@
 
 interface IUser{
     
-    userId?: any | null
+    userId?: string | null |number
     displayName:string,
     email:string,
     password:string,
-    photoURL?:any
+    photoURL?:string
 }
 
 export default IUser;
