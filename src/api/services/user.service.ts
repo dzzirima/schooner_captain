@@ -1,6 +1,6 @@
 /** this file  has the implementation of the user service */
 
-import { QueryOptions } from "sequelize";
+
 import IUser from "../interfaces/user.interface";
 import User from "../models/User.model";
 
@@ -9,13 +9,12 @@ export const createUserService = async (userOptions: IUser) => {
 };
 
 
-
-export const getUser = async(userId:number) =>{
+export const getUserService = async(userId: number | string) =>{
     return await User.findByPk(userId)
 }
 
 
-export const getAllUsers = async ():Promise<any> =>{
+export const getAllUsersService = async ():Promise<any> =>{
 
     try {
       let usersFound  = await User.findAll()
@@ -32,7 +31,7 @@ export const getAllUsers = async ():Promise<any> =>{
   }
 
 
-export const updateUser = async (updateOptions: { [x: string]: any; }):Promise<any> =>{
+export const updateUserService = async (updateOptions: { [x: string]: any; }):Promise<any> =>{
 
     try {
       //return the number of destroyed rows
@@ -57,7 +56,7 @@ export const updateUser = async (updateOptions: { [x: string]: any; }):Promise<a
   }
   
 
-  export const  deleteUser = async (Id:string):Promise<any> =>{
+  export const  deleteUserService = async (Id:string):Promise<any> =>{
     try {
       //return the number of destroyed rows
       let deletedUser  = await User.destroy({where:{
