@@ -3,7 +3,7 @@ import supertest from 'supertest';
 import Server from "../src/app"
 
 const app = new Server().express
-describe("user", () =>{
+describe("User Tests", () =>{
 
     describe("given  that the user does not exist ", () =>{
         it("should return 404", async  () =>{
@@ -14,7 +14,6 @@ describe("user", () =>{
 
         
     })
-
 
     describe("given that the user exist", () =>{
         it("should retun 200 and have success property on the body", async() =>{
