@@ -4,6 +4,7 @@ import cors from "cors"
 import postgresDdClient from "./api/config/connect";
 import logger from "../src/utils/logger"
 import apiRoutes from "./api/ApiRoutes";
+import * as  errorHandler from "./utils/responseHandlers/errorHandler" 
 
 class App {
     public express: express.Application;
@@ -15,6 +16,7 @@ class App {
         this.setMiddleware();
         this.setRoutes();
         this.connectToDB();
+        this.catchError()
         
       }
     
@@ -22,7 +24,7 @@ class App {
         this.express.use(cors());
         this.express.use(express.json());
         this.express.use(morgan("dev"));
-        // this.express.use(this.errorHandler)
+     
       }
     
       private setRoutes(): void {
@@ -43,16 +45,11 @@ class App {
       
       }
     
-      private errorHandler (err: Error ,req:Request , res: Response , next: NextFunction): void {
-
-        /** 
-         * this middleware catches all the codebase errors
-        */
-        logger.error(err)
-
+      private catchError(): void {
+        this.express.use(errorHandler.notFound);
+        this.express.use(errorHandler.internalServerError);
+        this.express.use(errorHandler.badRequest);
       }
-
-
 }
 
 
