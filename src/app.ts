@@ -1,4 +1,4 @@
-import express from "express"
+import express, { NextFunction } from "express"
 import morgan from "morgan"
 import cors from "cors"
 import postgresDdClient from "./api/config/connect";
@@ -15,13 +15,14 @@ class App {
         this.setMiddleware();
         this.setRoutes();
         this.connectToDB();
-        this.catchError();
+        
       }
     
       private setMiddleware(): void {
         this.express.use(cors());
         this.express.use(express.json());
         this.express.use(morgan("dev"));
+        // this.express.use(this.errorHandler)
       }
     
       private setRoutes(): void {
@@ -32,7 +33,7 @@ class App {
         try {
     
           await postgresDdClient.authenticate()
-          await postgresDdClient.sync({ alter: true });
+          await postgresDdClient.sync({ force: true });
           logger.info("database connected successfully !!!");
             
         } catch (error) {
@@ -42,7 +43,14 @@ class App {
       
       }
     
-      private catchError(): void {}
+      private errorHandler (err: Error ,req:Request , res: Response , next: NextFunction): void {
+
+        /** 
+         * this middleware catches all the codebase errors
+        */
+        logger.error(err)
+
+      }
 
 
 }

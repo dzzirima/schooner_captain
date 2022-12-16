@@ -7,6 +7,7 @@ import {
   AllowNull,
   NotEmpty,
   Default,
+  Unique,
 } from "sequelize-typescript";
 import IUser from "../interfaces/user.interface";
 import { DataType } from "sequelize-typescript";
@@ -17,14 +18,21 @@ import { DataType } from "sequelize-typescript";
 })
 class User extends Model implements IUser {
 
-@AutoIncrement
-  @Column({ primaryKey: true, type: DataType.INTEGER })
-  userId?: number;
+
+  @Column({ primaryKey: true, type: DataType.STRING })
+  userId?: string;
 
   @NotEmpty
   @Column({ type: DataType.STRING })
   displayName!: string;
 
+  @Column({ type: DataType.STRING })
+  lastName!: string;
+  
+  @Column({ type: DataType.STRING })
+  firstName!: string;
+
+  @Unique
   @NotEmpty
   @Column({ type: DataType.STRING })
   email!: string;
