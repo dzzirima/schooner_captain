@@ -6,7 +6,7 @@ import { Request, Response } from "express"
 
 
 import {Router } from "express"
-import userRoutes from "./routes/user.routes"
+import userRoutes from "./routes/UserRoutes"
 
 
 const apiRoutes = Router()

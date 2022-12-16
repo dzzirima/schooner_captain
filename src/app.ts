@@ -1,9 +1,9 @@
 import express from "express"
 import morgan from "morgan"
 import cors from "cors"
-import postgresDdClient from "./utils/connect";
+import postgresDdClient from "./api/config/connect";
 import logger from "../src/utils/logger"
-import apiRoutes from "./api/api.routes";
+import apiRoutes from "./api/ApiRoutes";
 
 class App {
     public express: express.Application;

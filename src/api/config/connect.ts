@@ -1,5 +1,5 @@
 import {Sequelize} from "sequelize-typescript"
-import User from "../api/models/User.model"
+import User from "../models/UserModel"
 
 let postgresDdClient = new Sequelize("schooner", "postgres", "1311", {
   host: "localhost",
@@ -9,6 +9,6 @@ let postgresDdClient = new Sequelize("schooner", "postgres", "1311", {
   
 });
 
-postgresDdClient.addModels([User])
+// postgresDdClient.addModels([User])
 
 export default postgresDdClient

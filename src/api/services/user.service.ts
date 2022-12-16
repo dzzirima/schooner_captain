@@ -2,7 +2,7 @@
 
 
 import IUser from "../interfaces/user.interface";
-import User from "../models/User.model";
+import User from "../models/UserModel";
 
 export const createUserService = async (userOptions: IUser) => {
   return await  User.create({ ...userOptions });
