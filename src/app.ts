@@ -36,7 +36,7 @@ class App {
           logger.info("database connected successfully !!!");
             
         } catch (error) {
-          logger.info(error)
+          logger.error(error)
             
         }
       
