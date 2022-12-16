@@ -82,10 +82,12 @@ export const login = async (email: string, password: string): Promise<any> => {
     return Promise.resolve(loginResult);
   }
 
+  
   let comparedPassword = await bcrypt.compare(password, userFound.password);
+  console.log(comparedPassword)
 
   if (!comparedPassword) {
-    Promise.resolve(loginResult);
+   return  Promise.resolve(loginResult);
   }
 
   const token = await generateSignedToken(userFound);
