@@ -41,6 +41,8 @@ class Asset extends Model implements IAsset {
   //   smartInfo?: SmartInfoEntity;
 }
 
+export default Asset;
+
 export enum AssetType {
   IMAGE = "IMAGE",
   VIDEO = "VIDEO",

@@ -16,13 +16,13 @@ class Exif extends Model implements IExistIf {
   @Column({ type: DataType.STRING })
   description!: string;
 
-  @Column({ type: DataType.NUMBER })
+  @Column({ type: DataType.INTEGER })
   fileSizeInBytes!: number | null;
 
-  @Column({ type: DataType.NUMBER })
+  @Column({ type: DataType.INTEGER })
   imageHeight!: number | null;
 
-  @Column({ type: DataType.NUMBER })
+  @Column({ type: DataType.INTEGER })
   imageWidth!: number | null;
 
   @Column({ type: DataType.STRING })
@@ -31,10 +31,10 @@ class Exif extends Model implements IExistIf {
   @Column({ type: DataType.DATE })
   dateTimeOriginal!: Date | null;
 
-  @Column({ type: DataType.NUMBER })
+  @Column({ type: DataType.INTEGER })
   longitude!: number | null;
 
-  @Column({ type: DataType.NUMBER })
+  @Column({ type: DataType.INTEGER })
   latitude!: number | null;
 
   @Column({ type: DataType.STRING })

@@ -7,12 +7,14 @@ import { Request, Response } from "express"
 
 import {Router } from "express"
 import userRoutes from "./routes/UserRoutes"
+import albumRoutes from './routes/AlbumRoutes'
 
 
 const apiRoutes = Router()
 
 
 apiRoutes.use("/user",userRoutes)
+apiRoutes.use("/album" ,albumRoutes)
 
 apiRoutes.get("/",async (req:Request, res:Response) =>{
 
