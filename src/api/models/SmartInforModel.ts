@@ -13,7 +13,7 @@ class SmartInfor  extends Model implements ISmartInfo {
   @Column({ primaryKey: true, type: DataType.STRING })
   smartInforId!: string | number | null;
 
-  @Column({ type: DataType.STRING })
+  @Column({ type: DataType.ARRAY(DataType.STRING) })
   tags!: string[] | null;
 
   @Column({ type: DataType.STRING })
