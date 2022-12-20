@@ -1,12 +1,12 @@
 
 interface IAsset{
     
-    assertId: string | null |number,
-    userId:string,
+    assetId: string | null |number,
+    ownerId:string,
     type: AssetType;
-    webpPath: string | null;
+    webPath: string ;
     isFavorite: boolean;
-    duration:string | null;
+    duration:string;
     originalPath: string
    
 }

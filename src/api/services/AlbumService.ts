@@ -1,12 +1,13 @@
 import { QueryOptions } from "sequelize";
-import { generateUUId } from "../../utils/generateUserId";
+import { generateUUId } from "../../utils/generateId";
 import IAlbum from "../interfaces/AlbumInterface";
 import Album from "../models/AlbumModel";
+
 
 export const addAlbum = async (albumOptions: IAlbum): Promise<Album> => {
   let album = await Album.create({
     //@ts-ignore
-    albumId: generateUUId(),
+    albumId: await  generateUUId(),
     ...albumOptions,
   });
 

@@ -5,7 +5,7 @@ import User from "../models/UserModel";
 import bcrypt from "bcrypt";
 import generateSignedToken from "../../utils/generateSignedToken";
 
-import { generateUserId } from "../../utils/generateUserId";
+import { generateUserId } from "../../utils/generateId";
 
 export const addUser = async (userOption: IUser): Promise<User> => {
   const hashedPassedword = await bcrypt.hash(userOption.password, 10);

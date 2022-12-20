@@ -8,16 +8,16 @@ import IAsset from "../interfaces/AssetInterface";
 })
 class Asset extends Model implements IAsset {
   @Column({ primaryKey: true, type: DataType.STRING })
-  assertId!: string;
+  assetId!: string;
 
   @Column({ type: DataType.STRING })
-  deviceAssetId!: string;
+  deviceAssetId?: string;
 
   @Column({ type: DataType.STRING })
-  userId!: string;
+  ownerId!: string;
 
   @Column({ type: DataType.STRING })
-  deviceId!: string;
+  deviceId?: string;
 
   @Column({ type: DataType.STRING })
   type!: AssetType;
@@ -26,13 +26,13 @@ class Asset extends Model implements IAsset {
   originalPath!: string;
 
   @Column({ type: DataType.STRING })
-  webpPath!: string | null;
+  webPath!: string ;
 
   @Column({ type: DataType.BOOLEAN })
-  isFavorite!: boolean;
+  isFavorite!: boolean ;
 
   @Column({ type: DataType.STRING })
-  duration!: string | null;
+  duration!: string ;
 
   //   @OneToOne(() => ExifEntity, (exifEntity) => exifEntity.asset)
   //   exifInfo?: ExifEntity;
